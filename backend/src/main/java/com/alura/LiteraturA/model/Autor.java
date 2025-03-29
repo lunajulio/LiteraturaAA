@@ -1,6 +1,10 @@
 
 package com.alura.LiteraturA.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,9 +14,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(
@@ -50,9 +51,18 @@ public class Autor {
         this.nombre = nombre;
     }
 
+
     public String toString() {
         String var10000 = this.nombre;
         return "AUTOR: " + var10000 + "\nFecha de Nacimiento: " + this.fechaDeNacimiento + "\nFecha de Defuncion: " + this.fechaDeFallecimiento + "\nLibros: " + (this.libros != null ? (String)this.libros.stream().map(Libro::getTitulo).collect(Collectors.joining(", ")) : "N/A") + "\n\n";
+    }
+
+    public Long getId() {
+        return this.Id;
+    }
+
+    public void setId(Long id) {
+        this.Id = id;
     }
 
     public String getNombre() {

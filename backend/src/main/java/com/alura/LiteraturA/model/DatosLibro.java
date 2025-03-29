@@ -5,19 +5,23 @@
 
 package com.alura.LiteraturA.model;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.List;
 
 @JsonIgnoreProperties(
         ignoreUnknown = true
 )
-public record DatosLibro(String titulo, List<DatosAutor> autor, List<String> idiomas, Double descargas) {
-    public DatosLibro(@JsonAlias({"title"}) String titulo, @JsonAlias({"authors"}) List<DatosAutor> autor, @JsonAlias({"languages"}) List<String> idiomas, @JsonAlias({"download_count"}) Double descargas) {
+public record DatosLibro(String titulo, List<DatosAutor> autor, List<String> idiomas, Double descargas, Map<String, String> formats) {
+    public DatosLibro(@JsonAlias({"title"}) String titulo, @JsonAlias({"authors"}) List<DatosAutor> autor, @JsonAlias({"languages"}) List<String> idiomas, @JsonAlias({"download_count"}) Double descargas,
+            @JsonAlias({"formats"}) Map<String, String> formats) {
         this.titulo = titulo;
         this.autor = autor;
         this.idiomas = idiomas;
         this.descargas = descargas;
+        this.formats = formats;
     }
 
     @JsonAlias({"title"})
@@ -38,5 +42,10 @@ public record DatosLibro(String titulo, List<DatosAutor> autor, List<String> idi
     @JsonAlias({"download_count"})
     public Double descargas() {
         return this.descargas;
+    }
+
+    @JsonAlias({"formats"})
+    public Map<String, String> formats() {
+        return this.formats != null ? this.formats : Map.of();
     }
 }

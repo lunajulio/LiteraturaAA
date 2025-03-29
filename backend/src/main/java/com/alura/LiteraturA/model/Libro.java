@@ -5,6 +5,8 @@
 
 package com.alura.LiteraturA.model;
 
+import java.util.Optional;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.util.Optional;
 
 @Entity
 @Table(
@@ -37,6 +38,9 @@ public class Libro {
     private Autor autor;
     private Double descargas;
 
+    @Column(length=1000)
+    private String urlPortada;
+
     public Libro() {
     }
 
@@ -51,6 +55,7 @@ public class Libro {
 
         this.idioma = (String)datosLibro.idiomas().get(0);
         this.descargas = datosLibro.descargas();
+        this.urlPortada = datosLibro.formats().get("image/jpeg");
     }
 
     public String toString() {
@@ -96,5 +101,13 @@ public class Libro {
 
     public void setDescargas(Double descargas) {
         this.descargas = descargas;
+    }
+
+    public String getUrlPortada() {
+        return urlPortada;
+    }
+    
+    public void setUrlPortada(String urlPortada) {
+        this.urlPortada = urlPortada;
     }
 }
