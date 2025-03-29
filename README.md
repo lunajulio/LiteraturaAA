@@ -1,7 +1,7 @@
 # LiteraturAA
 
 ## 📚 Descripción del Proyecto
-LiteraturA es una aplicación de consola que te permite buscar, consultar y gestionar información sobre libros y autores utilizando la API de Gutendex. La aplicación permite almacenar los datos en una base de datos MySQL para consultas posteriores.
+LiteraturA es una aplicación que permite buscar, consultar y gestionar información sobre libros y autores utilizando la API de Gutendex. La aplicación permite almacenar los datos en una base de datos MySQL para consultas posteriores.
 
 ## ✨ Características Principales
 -🔍 Búsqueda de libros: Encuentra libros por título en el catálogo de Gutendex
