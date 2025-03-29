@@ -5,6 +5,11 @@
 
 package com.alura.LiteraturA.principal;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
+
 import com.alura.LiteraturA.model.Autor;
 import com.alura.LiteraturA.model.Datos;
 import com.alura.LiteraturA.model.DatosAutor;
@@ -14,10 +19,6 @@ import com.alura.LiteraturA.repository.AutorRepository;
 import com.alura.LiteraturA.repository.LibroRepository;
 import com.alura.LiteraturA.service.ConsumoAPI;
 import com.alura.LiteraturA.service.ConvierteDatos;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 
 public class Principal {
     private static final String URL_BASE = "https://gutendex.com/books/";
@@ -29,9 +30,7 @@ public class Principal {
     private List<Libro> libros;
     private List<Autor> autor;
 
-    public Principal() {
-        this.teclado = new Scanner(System.in);
-    }
+    
 
     public Principal(LibroRepository librorepositorio, AutorRepository autorrepositorio) {
         this.teclado = new Scanner(System.in);
@@ -84,15 +83,6 @@ public class Principal {
 
     }
 
-    private Datos getDatosLibro() {
-        System.out.println("Escribe el nombre del Libro que deseas buscar");
-        String nombreLibro = this.teclado.nextLine();
-        String json = this.consumoAPI.obtenerDatos("https://gutendex.com/books/?search=" + nombreLibro.replace(" ", "+"));
-        System.out.println(json);
-        Datos datos = (Datos)this.conversor.obtenerDatos(json, Datos.class);
-        System.out.println(datos);
-        return datos;
-    }
 
     private void leerLibro(Libro libro) {
         System.out.printf("----- LIBRO -----\nTitulo: %s\nAutor: %s\nIdioma: %s\nNumero de descargas: %.0f\n-------------------- \n\n\n", libro.getTitulo(), libro.getAutor().getNombre(), libro.getIdioma(), libro.getDescargas());
