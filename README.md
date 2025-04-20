@@ -1,4 +1,5 @@
 # LiteraturAA
+[![Author](https://img.shields.io/badge/by-lunajulio-purple)](https://github.com/lunajulio)
 
 ## 📚 Descripción del Proyecto
 LiteraturA es una aplicación que permite buscar, consultar y gestionar información sobre libros y autores utilizando la API de Gutendex. La aplicación permite almacenar los datos en una base de datos MySQL para consultas posteriores.
